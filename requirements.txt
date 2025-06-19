@@ -1,0 +1,8 @@
+Flask
+gunicorn
+numpy
+scikit-learn
+pandas
+numpy
+matplotlib
+# pickle is part of the Python standard library 

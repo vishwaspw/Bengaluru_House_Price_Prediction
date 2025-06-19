@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bengaluru House Price Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .header-bg {
+            background: rgba(0, 114, 255, 0.85);
+            color: #fff;
+            padding: 30px 0 20px 0;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+        }
+        .form-bg {
+            background: rgba(255,255,255,0.25);
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+            padding: 32px 24px;
+            margin-top: -40px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .footer {
+            margin-top: 40px;
+            padding: 16px 0;
+            background: rgba(241,241,241,0.95);
+            text-align: center;
+            color: #888;
+            border-radius: 16px;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #005fa3 0%, #0096a3 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bg text-center mb-5">
+        <h1 class="display-4 font-weight-bold">Bengaluru House Price Prediction</h1>
+        <p class="lead">Get instant price estimates for properties in Bengaluru</p>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <form method="POST" class="form-bg">
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <select class="form-control" id="location" name="location" required>
+                            {% for loc in locations %}
+                                <option value="{{ loc }}">{{ loc }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sqft">Total Square Feet</label>
+                        <input type="number" class="form-control" id="sqft" name="sqft" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bath">Number of Bathrooms</label>
+                        <input type="number" class="form-control" id="bath" name="bath" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bhk">Number of BHK</label>
+                        <input type="number" class="form-control" id="bhk" name="bhk" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Predict Price</button>
+                    {% if prediction is not none %}
+                        <div class="alert alert-success mt-4 text-center">
+                            <h4>Predicted Price:</h4>
+                            <span style="font-size:2rem;font-weight:bold;">₹ {{ '{:,.0f}'.format(prediction) }}</span>
+                        </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+        <div class="footer mt-5">
+            &copy; {{ 2025 }} Bengaluru House Price Predictor | Made with Flask &amp; Bootstrap
+        </div>
+    </div>
+</body>
+</html> 

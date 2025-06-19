@@ -1,0 +1,67 @@
+body {
+    background: url('image.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Overlay for readability */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 0;
+}
+
+.container, .header-bg, .footer {
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    max-width: 500px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h2 {
+    text-align: center;
+}
+.header-bg {
+    background: rgba(0, 114, 255, 0.85);
+    color: #fff;
+    padding: 30px 0 20px 0;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+}
+.prediction-card {
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    border-radius: 16px;
+    padding: 32px 24px;
+    background: rgba(255,255,255,0.35);
+    margin-top: -40px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.footer {
+    margin-top: 40px;
+    padding: 16px 0;
+    background: rgba(241,241,241,0.95);
+    text-align: center;
+    color: #888;
+    border-radius: 16px;
+}
+.btn-primary {
+    background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+    border: none;
+}
+.btn-primary:hover {
+    background: linear-gradient(90deg, #005fa3 0%, #0096a3 100%);
+}
+.form-control:focus {
+    border-color: #00c6ff;
+    box-shadow: 0 0 0 0.2rem rgba(0,198,255,.25);
+} 
